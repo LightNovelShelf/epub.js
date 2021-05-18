@@ -421,9 +421,20 @@ class Mapping {
 		var pos = text.indexOf(splitter);
 
 		if(pos === -1 || node.nodeType != Node.TEXT_NODE) {
-			range = doc.createRange();
-			range.selectNodeContents(node);
-			return [range];
+			if (text !== '') {
+				pos = 0;
+				for (const ch of text) {
+					range = doc.createRange();
+					range.setStart(node, pos);
+					range.setEnd(node, ++pos);
+					ranges.push(range);
+				}
+				return ranges;
+			} else {
+				range = doc.createRange();
+				range.selectNodeContents(node);
+				return [range];
+			}
 		}
 
 		range = doc.createRange();
