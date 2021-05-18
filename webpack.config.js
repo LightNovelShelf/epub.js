@@ -38,7 +38,7 @@ module.exports = {
 		minimize: MINIMIZE
 	},
 	externals: {
-		"jszip/dist/jszip": "JSZip",
+		"jszip/dist/jszip": "jszip",
 		"xmldom": "xmldom"
 	},
 	plugins: [],
